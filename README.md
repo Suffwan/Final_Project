@@ -29,6 +29,29 @@ WHERE team_name_home = 'Toronto Raptors'
 GROUP BY team_name_home;
 
 
+ * This SQL code is to find Raptors performance for playing in Home and Away by calculating Avg points 
+      ```sql
+      SELECT
+    team_name_home,
+    AVG(pts_home) AS avg_home_points,
+    AVG(pts_away) AS avg_away_points
+FROM final_project.game
+WHERE team_name_home = 'Toronto Raptors' 
+GROUP BY team_name_home;
+
+
+  * This SQL code is to find Golden State Warriors performance for playing in Home and Away by calculating Avg points 
+      ```sql
+      SELECT
+    team_name_home,
+    AVG(pts_home) AS avg_home_points,
+    AVG(pts_away) AS avg_away_points
+FROM final_project.game
+WHERE team_name_home = 'Golden State Warriors' 
+GROUP BY team_name_home;
+
+
+
   * This is the analysis to find, 'How many games Golden State Warriors won and lose in thier carrier'?
     ```sql
     SELECT
@@ -62,5 +85,96 @@ WHERE g.game_date >= '2019-01-01' AND g.game_date <= '2019-12-31'
   * PowerBi visual for these analysis
     ![image](https://github.com/Suffwan/Final_Project/assets/135911236/5fab3752-9849-4213-9c86-ec3d524ef30a)
 
+-- 
+    # Sql Analysis on rest of the teams and dataset
+
+    * This analysis is to perform some other matrics in our dataset like the performance of other teams and Average win or loss rate for the teams.
+   
+    * To find out the Insights I have done analysis on SQL
+   
+    * This SQL code is to find Teams Performance Analysis and it will give out insights about which team has hightes avg.points, avg.rebounds and avg.assists
+      ```sql
+      SELECT
+    team_name_home AS team_name,
+    AVG(pts_home) AS avg_points,
+    AVG(reb_home) AS avg_rebounds,
+    AVG(ast_home) AS avg_assists
+FROM final_project.`game`
+GROUP BY team_name_home
+ORDER BY avg_points DESC;
+
+    * This SQL code is to find top 10 teams that played at home and score most points 
+    ```sql
+    SELECT
+    team_name_home AS team_name,
+    AVG(pts_home) AS avg_points_home
+FROM final_project.game
+WHERE YEAR(game_date) BETWEEN 2010 AND 2023
+GROUP BY team_name_home
+ORDER BY avg_points_home DESC
+LIMIT 10;
+
+    * This SQL code is to find top 10 teams that played at away and score most points 
+    ```sql
+    SELECT
+    team_name_away AS team_name,
+    AVG(pts_away) AS avg_points_away
+FROM final_project.`game`
+WHERE YEAR(game_date) BETWEEN 2010 AND 2023
+GROUP BY team_name_away
+ORDER BY avg_points_away DESC
+LIMIT 10;
+
+    * This SQL code is to find the teams that have score highest points in away and at home 
+    ```sql
+    SELECT
+    team_name,
+    MAX(pts_home) AS highest_points_at_home,
+    MAX(pts_away) AS highest_points_away
+FROM (
+    SELECT
+        team_name_home AS team_name,
+        MAX(pts_home) AS pts_home,
+        0 AS pts_away
+    FROM final_project.game
+    GROUP BY team_name_home
+
+    UNION ALL
+
+    SELECT
+        team_name_away AS team_name,
+        0 AS pts_home,
+        MAX(pts_away) AS pts_away
+    FROM final_project.game
+    GROUP BY team_name_away
+) AS combined_data
+GROUP BY team_name;
+
+
+    * This SQL code is to find the overview of the teams with the avg points per game and avg rebound per game 
+    ```sql
+    SELECT
+    team_name_home AS team_name,
+    AVG(pts_home + pts_away) AS avg_points_per_game,
+    AVG(reb_home + reb_away) AS avg_rebounds_per_game
+FROM final_project.game
+GROUP BY team_name_home;
+
+    * This SQL code is to find the overview of the teams with total wins and toal loss
+    SELECT
+    team_name_home AS team_name,
+    SUM(CASE WHEN wl_home = 'W' THEN 1 ELSE 0 END) AS total_wins,
+    SUM(CASE WHEN wl_home = 'L' THEN 1 ELSE 0 END) AS total_losses
+FROM final_project.game
+GROUP BY team_name_home;
+
+
+    * I have made a PowerBi dashboard to understand better wht results these analysis will give. I try to use different visuals to have better insights of the datasets.
+    ![image](https://github.com/Suffwan/Final_Project/assets/135911236/64e56b6c-389c-462b-ae65-4b5d6d24a8a3)
+
+
+    
+
+   
 
 

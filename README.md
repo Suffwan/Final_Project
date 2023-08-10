@@ -86,13 +86,13 @@ WHERE g.game_date >= '2019-01-01' AND g.game_date <= '2019-12-31'
     ![image](https://github.com/Suffwan/Final_Project/assets/135911236/5fab3752-9849-4213-9c86-ec3d524ef30a)
 
 -- 
-    # Sql Analysis on rest of the teams and dataset
+  # Sql Analysis on rest of the teams and dataset
 
-    * This analysis is to perform some other matrics in our dataset like the performance of other teams and Average win or loss rate for the teams.
+  * This analysis is to perform some other matrics in our dataset like the performance of other teams and Average win or loss rate for the teams.
    
-    * To find out the Insights I have done analysis on SQL
+  * To find out the Insights I have done analysis on SQL
    
-    * This SQL code is to find Teams Performance Analysis and it will give out insights about which team has hightes avg.points, avg.rebounds and avg.assists
+  * This SQL code is to find Teams Performance Analysis and it will give out insights about which team has hightes avg.points, avg.rebounds and avg.assists
       ```sql
       SELECT
     team_name_home AS team_name,
@@ -103,7 +103,7 @@ FROM final_project.`game`
 GROUP BY team_name_home
 ORDER BY avg_points DESC;
 
-    * This SQL code is to find top 10 teams that played at home and score most points 
+  * This SQL code is to find top 10 teams that played at home and score most points 
     ```sql
     SELECT
     team_name_home AS team_name,
@@ -114,7 +114,7 @@ GROUP BY team_name_home
 ORDER BY avg_points_home DESC
 LIMIT 10;
 
-    * This SQL code is to find top 10 teams that played at away and score most points 
+  * This SQL code is to find top 10 teams that played at away and score most points 
     ```sql
     SELECT
     team_name_away AS team_name,
@@ -125,7 +125,7 @@ GROUP BY team_name_away
 ORDER BY avg_points_away DESC
 LIMIT 10;
 
-    * This SQL code is to find the teams that have score highest points in away and at home 
+  * This SQL code is to find the teams that have score highest points in away and at home 
     ```sql
     SELECT
     team_name,
@@ -151,7 +151,7 @@ FROM (
 GROUP BY team_name;
 
 
-    * This SQL code is to find the overview of the teams with the avg points per game and avg rebound per game 
+  * This SQL code is to find the overview of the teams with the avg points per game and avg rebound per game 
     ```sql
     SELECT
     team_name_home AS team_name,
@@ -160,7 +160,7 @@ GROUP BY team_name;
 FROM final_project.game
 GROUP BY team_name_home;
 
-    * This SQL code is to find the overview of the teams with total wins and toal loss
+  * This SQL code is to find the overview of the teams with total wins and toal loss
     SELECT
     team_name_home AS team_name,
     SUM(CASE WHEN wl_home = 'W' THEN 1 ELSE 0 END) AS total_wins,
@@ -169,7 +169,7 @@ FROM final_project.game
 GROUP BY team_name_home;
 
 
-    * I have made a PowerBi dashboard to understand better wht results these analysis will give. I try to use different visuals to have better insights of the datasets.
+* I have made a PowerBi dashboard to understand better wht results these analysis will give. I try to use different visuals to have better insights of the datasets.
     ![image](https://github.com/Suffwan/Final_Project/assets/135911236/64e56b6c-389c-462b-ae65-4b5d6d24a8a3)
 
 

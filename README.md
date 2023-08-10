@@ -4,13 +4,17 @@
 --
   ## This project is an Analysis on NBA dataset 
 
-* I took the NBA dataset from Kaggle.
-* There were many tables given in that dataset but i selected only two tables for my analysis.
-* In that dataset I selected two tables one is fact table and one is dimenssion table, My fact table is contain (games) table and my dimenssion table contain (game_info) table. 
-* For the analysis on my dataset i perform all the analysis on MySQL. For the analysis I tried to do it in a way where I did the analysis on my two favoirte teams 
-  ('Toronto Raptors vs Golden State Warriors'). 
-* I tried to perfome some analysis on it to get some results. 
-* Other approch i did for analysis is that I perform the analysis on all the teams and tried to get as much insights as I can from Dataset.
+  # ETL Process:
+  * I took the NBA dataset from Kaggle.
+  * There were many tables given in that dataset but i selected only two tables for my analysis.
+  * In that dataset I selected two tables one is fact table and one is dimenssion table, My fact table is contain (games) table and my dimenssion table contain     (game_info) table.
+  * Since there is no need for cleansing the data because data is given in good formate. We will load the data now.
+  * After Extracting the data from the dataset now I will load it on MySQL server we will transform and load the data on our data base.
+
+    # Overview
+  * For the analysis on my dataset i perform all the analysis on MySQL. For the analysis I tried to do it in a way where I did the analysis on my two favoirte       teams ('Toronto Raptors vs Golden State Warriors'). 
+  * I tried to perfome some analysis on it to get some results. 
+  * Other approch i did for analysis is that I perform the analysis on all the teams and tried to get as much insights as I can from Dataset.
 
 
 --
@@ -173,6 +177,9 @@ GROUP BY team_name_home;
     ![image](https://github.com/Suffwan/Final_Project/assets/135911236/64e56b6c-389c-462b-ae65-4b5d6d24a8a3)
 
 
+
+# Reflection:
+  In reflection i would say that the dataset has given more tables which we can use for the analysis to get better insights from the data set. We can use those table to find more informations about players, teams, Manager, Salary and many more insights, but for the purposes of this project we will only game dataset and game info. The challenging part of this whole project was creating a dashboard and visuals getting a specific data and making a visual for it was little bit challenging part. I will recommend that before doing the analysis make your mind how and what kind of visuals you want from data and then make analysis base on that. Other then that fun Project, I can try to make it it more better and can get more insights from it, but for right now this is the best I can come up with.
     
 
    
